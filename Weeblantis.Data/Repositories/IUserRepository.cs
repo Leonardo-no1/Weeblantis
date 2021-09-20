@@ -5,8 +5,6 @@ namespace Weeblantis.Data.Repositories
 {
     public interface IUserRepository : IRepository<UserModel>
     {
-        UserModel GetByUsername(string Username);
-        UserModel GetByEmail (string eEmail);
-
+        UserModel GetByEmail (string Email);
     }
 }

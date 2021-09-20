@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */    
+@import "~angular-notifier/styles";
+.invalid
+{
+    border:1px solid red;
+}
+.error{
+    color:red;
+    font-size: 10px;
+    padding-left: 3px;
+}

@@ -10,8 +10,8 @@ using Weeblantis.Data;
 namespace Weeblantis.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210919172827_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210920201731_initialCreation")]
+    partial class initialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -384,9 +384,6 @@ namespace Weeblantis.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Salt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
