@@ -1,0 +1,12 @@
+<section class="register-clean">
+    <form method="post" style="height: auto;" [formGroup]="formGroup">
+        <h2 class="visually-hidden">Register Form</h2>
+        <div class="illustration"><img class="logo" src="../../assets//logo_text.png"></div>
+        <div class="form-group mb-3"><input class="form-control form-control-sm" type="text" formControlName="firstName" name="FirstName" placeholder="First name" autofocus="" [ngClass]="{'invalid': firstName?.invalid && firstName?.touched}" autocomplete="off" required=""><p class="error" *ngIf="firstName?.invalid && firstName?.touched">First name is required</p></div>
+        <div class="form-group mb-3"><input class="form-control form-control-sm" type="text" formControlName="lastName" placeholder="Last name" name="lastName" [ngClass]="{'invalid': lastName?.invalid && lastName?.touched}" required=""><p class="error" *ngIf="lastName?.invalid && lastName?.touched">Last name is required</p></div>
+        <div class="form-group mb-3"><input class="form-control form-control-sm" type="email" formControlName="email" name="email" placeholder="Email" [ngClass]="{'invalid': email?.invalid && email?.touched}" inputmode="email" autocomplete="off" required=""><p class="error" *ngIf="email?.invalid && email?.touched">Email is required</p></div>
+        <div class="form-group mb-3"><input class="form-control form-control-sm" type="password" formControlName="password" name="password" [ngClass]="{'invalid': password?.invalid && password?.touched}" placeholder="Password" required="" autocomplete="off"><p class="error" *ngIf="password?.invalid && password?.touched">Password is required</p></div>
+        <div class="form-group mb-3"><button class="btn btn-primary shadow-none d-block w-100 registBtn" type="submit" (click)="register()" [disabled]="f?.invalid">Register</button></div>
+        <div class="text-center"><a  routerLink="/login">login</a></div>
+    </form>
+</section>

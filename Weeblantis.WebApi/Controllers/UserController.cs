@@ -22,10 +22,11 @@ namespace Weeblantis.WebApi.Controllers
         }
 
         // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] UserDto user)
+        [HttpPost("Register")]
+        public ActionResult Register([FromBody] UserDto user)
         {
             _userService.RegisterUser(user);
+            return Ok(); 
         }
 
         // POST api/<UserController>

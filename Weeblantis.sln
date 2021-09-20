@@ -13,6 +13,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weeblantis.Core", "Weeblant
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weeblantis.Root", "Weeblantis.Root\Weeblantis.Root.csproj", "{46070714-653E-4ECB-BD93-9C65C4F60A2D}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Weeblantis.Presentation", "Weeblantis.Presentation\", "{04F35D6E-A4AB-4A6D-B79B-46C3D8578E70}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_1031"
+		Debug.AspNetCompiler.PhysicalPath = "Weeblantis.Presentation\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1031\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_1031"
+		Release.AspNetCompiler.PhysicalPath = "Weeblantis.Presentation\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1031\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1031"
+		SlnRelativePath = "Weeblantis.Presentation\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +60,10 @@ Global
 		{46070714-653E-4ECB-BD93-9C65C4F60A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46070714-653E-4ECB-BD93-9C65C4F60A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46070714-653E-4ECB-BD93-9C65C4F60A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F35D6E-A4AB-4A6D-B79B-46C3D8578E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F35D6E-A4AB-4A6D-B79B-46C3D8578E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F35D6E-A4AB-4A6D-B79B-46C3D8578E70}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F35D6E-A4AB-4A6D-B79B-46C3D8578E70}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

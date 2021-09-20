@@ -34,7 +34,6 @@ namespace Weeblantis.BusinessLogic.Services.Implementation
                     FirstName = userDto.FirstName,
                     LastName = userDto.LastName,
                     Email = userDto.Email,
-                    Username = userDto.Username,
                     HashedPassword = hashedPassword,
                     Salt = Convert.ToBase64String(salty),
                 };

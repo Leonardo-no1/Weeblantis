@@ -1,0 +1,10 @@
+<section class="login-clean">
+    <form method="post" [formGroup]="formGroup">
+        <h2 class="visually-hidden">Login Form</h2>
+        <div class="illustration"><img src="../../assets/logo_text.png"></div>
+        <div class="form-group mb-3"><input class="form-control" [ngClass]="{'invalid': email?.invalid && email?.touched}" formControlName="email" type="email" name="email" placeholder="Email"><p class="error" *ngIf="email?.invalid && email?.touched">Email is required</p></div>
+        <div class="form-group mb-3"><input class="form-control" [ngClass]="{'invalid': password?.invalid && password?.touched}" type="password" name="password" formControlName="password" placeholder="Password"><p class="error" *ngIf="password?.invalid && password?.touched">Password is required</p></div>
+        <div class="form-group mb-3"><button class="btn btn-primary shadow-none d-block w-100" type="submit" style="border-radius: 0px;" (click)="login()" [disabled]="f?.invalid">Log In</button></div>
+        <div class="text-center"><a  routerLink="/register">Register</a></div>
+    </form>
+</section>
