@@ -13,11 +13,23 @@ namespace Weeblantis.Root
     {
         public static void InjectDependencies(this IServiceCollection services, IConfiguration configuration)
         {
+            #region DatabaseContext
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(configuration.GetConnectionString("WeeblantisConnectionString")));
             services.AddScoped<DatabaseContext>();
+
+            #endregion
+
+            #region Services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEmailService, EmailService>();
+
+            #endregion
+
+            #region Repositories
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUserRepository, UserRepository>();
+
+            #endregion
         }
     }
 }

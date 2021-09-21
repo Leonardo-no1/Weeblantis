@@ -3,6 +3,7 @@ using System;
 using System.Security.Cryptography;
 using Weeblantis.Core.Exceptions;
 using Weeblantis.Core.Models.Dtos;
+using Weeblantis.Core.Models.Email;
 using Weeblantis.Core.Models.User;
 using Weeblantis.Data.Repositories;
 
@@ -11,16 +12,17 @@ namespace Weeblantis.BusinessLogic.Services.Implementation
     public class UserService : IUserService
     {
         private IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+        private IEmailService _emailService;
+        public UserService(IUserRepository userRepository, IEmailService emailService)
         {
             _userRepository = userRepository;
+            _emailService = emailService;
         }
 
         public void RegisterUser(UserDto userDto)
         {
             try
             {
-                var exists = _userRepository.GetByEmail(userDto.Email);
                 // generate a 128-bit salt using a cryptographically strong random sequence of nonzero values
                 byte[] salty = new byte[128 / 8];
                 using (var rngCsp = new RNGCryptoServiceProvider())
@@ -38,6 +40,15 @@ namespace Weeblantis.BusinessLogic.Services.Implementation
                     Salt = Convert.ToBase64String(salty),
                 };
                 _userRepository.Insert(user);
+
+                Email email = new Email {
+                    EmailAddress = userDto.Email,
+                    FirstName = userDto.FirstName,
+                    LastName = userDto.LastName,
+                    Subject = $"Welcome - {userDto.FirstName} {userDto.LastName}",
+                    Message = new WelcomeEmail().Message
+                };
+                _emailService.SendEmail(email);
             }
             catch (Exception e)
             {
@@ -56,7 +67,7 @@ namespace Weeblantis.BusinessLogic.Services.Implementation
             try
             {
                 byte[] salt = Convert.FromBase64String(user.Salt);
-                var hashed = HashPassword(salt,loginDto.Password);
+                var hashed = HashPassword(salt, loginDto.Password);
                 StringComparer comparer = StringComparer.Ordinal;
                 return comparer.Equals(user.HashedPassword, hashed);
             }
