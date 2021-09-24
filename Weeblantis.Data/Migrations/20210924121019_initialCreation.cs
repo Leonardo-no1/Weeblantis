@@ -62,22 +62,6 @@ namespace Weeblantis.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductInventories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductInventories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -107,7 +91,7 @@ namespace Weeblantis.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SKU = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    ProductInventoryId = table.Column<int>(type: "int", nullable: false),
+                    ProductInventory = table.Column<int>(type: "int", nullable: false),
                     ProductCategoryId = table.Column<int>(type: "int", nullable: false),
                     DiscountId = table.Column<int>(type: "int", nullable: true),
                     ImageBase64 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -128,12 +112,6 @@ namespace Weeblantis.Data.Migrations
                         name: "FK_Products_ProductCategories_ProductCategoryId",
                         column: x => x.ProductCategoryId,
                         principalTable: "ProductCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Products_ProductInventories_ProductInventoryId",
-                        column: x => x.ProductInventoryId,
-                        principalTable: "ProductInventories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -347,12 +325,6 @@ namespace Weeblantis.Data.Migrations
                 column: "ProductCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductInventoryId",
-                table: "Products",
-                column: "ProductInventoryId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ShoppingSessions_UserId",
                 table: "ShoppingSessions",
                 column: "UserId",
@@ -403,9 +375,6 @@ namespace Weeblantis.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductCategories");
-
-            migrationBuilder.DropTable(
-                name: "ProductInventories");
         }
     }
 }

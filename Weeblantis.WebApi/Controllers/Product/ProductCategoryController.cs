@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using Weeblantis.BusinessLogic.Services.Product;
 using Weeblantis.Core.Dtos.Product;
 
@@ -37,11 +38,32 @@ namespace Weeblantis.WebApi.Controllers.Product
             
         }
 
+        // PUT api/<ProductCategoryController>/5
+        [HttpPut("{id}")]
+        public ActionResult<ProductCategoryDto> Put(int id, [FromBody] ProductCategoryDto productCategoryDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var productCategory = _productCategoryService.UpdateProductCategory(id, productCategoryDto);
+                return Ok(productCategory);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
+        }
+
+
         // GET api/<ProductCategoryController>
         [HttpGet]
-        public void GetAllProductCategories()
+        public ActionResult<List<ProductCategoryDto>> GetAllProductCategories()
         {
-
+            var productCategories = _productCategoryService.GetAllProductCategories();
+            return productCategories;
         }
 
         // GET api/<ProductCategoryController>/5

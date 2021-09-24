@@ -23,7 +23,6 @@ namespace Weeblantis.Data
         #region Product
         public DbSet<ProductModel> Products { get; set; }
         public DbSet<ProductCategoryModel> ProductCategories { get; set; }
-        public DbSet<ProductInventoryModel> ProductInventories { get; set; }
         public DbSet<DiscountModel> Discounts { get; set; }
         #endregion
 

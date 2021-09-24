@@ -29,11 +29,32 @@ namespace Weeblantis.BusinessLogic.Services.Implementation.Product
             return _mapper.Map<ProductCategoryDto>(addedProductCategory);
         }
 
+        public ProductCategoryDto UpdateProductCategory(int id,ProductCategoryDto productCategoryDto)
+        {
+            var productCategory = _mapper.Map<ProductCategoryModel>(productCategoryDto);
+            
+            var toUpdate = _productCategoryRepository.GetById(id);
+            toUpdate.Name = productCategory.Name;
+            toUpdate.Description = productCategory.Description;
+            productCategory.ModifiedAt = DateTime.UtcNow;
+
+            var updatedProductCategory = _productCategoryRepository.Update(toUpdate);
+
+            return _mapper.Map<ProductCategoryDto>(updatedProductCategory);
+        }
+
+        public List<ProductCategoryDto> GetAllProductCategories()
+        {
+            var productCategories = _productCategoryRepository.GetAll();
+
+            return _mapper.Map<List<ProductCategoryDto>>(productCategories);
+        }
+
         public ProductCategoryDto GetProductCategoryById(int id)
         {
-            var addedProductCategory = _productCategoryRepository.GetById(id);
+            var product = _productCategoryRepository.GetById(id);
 
-            return _mapper.Map<ProductCategoryDto>(addedProductCategory);
+            return _mapper.Map<ProductCategoryDto>(product);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Weeblantis.WebApi.Controllers.User
             _userService = userService;
         }
 
-        // POST api/<UserController>
+        // POST api/Register
         [HttpPost("Register")]
         public ActionResult Register([FromBody] UserDto user)
         {
@@ -28,7 +28,7 @@ namespace Weeblantis.WebApi.Controllers.User
             return Ok();
         }
 
-        // POST api/<UserController>
+        // POST api/Login
         [HttpPost("Login")]
         public ActionResult Login([FromBody] LoginDto login)
         {

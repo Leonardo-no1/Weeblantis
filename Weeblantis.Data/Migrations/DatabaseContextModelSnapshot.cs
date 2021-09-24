@@ -239,30 +239,6 @@ namespace Weeblantis.Data.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("Weeblantis.Core.Models.Product.ProductInventoryModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductInventories");
-                });
-
             modelBuilder.Entity("Weeblantis.Core.Models.Product.ProductModel", b =>
                 {
                     b.Property<int>("Id")
@@ -297,7 +273,7 @@ namespace Weeblantis.Data.Migrations
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductInventoryId")
+                    b.Property<int>("ProductInventory")
                         .HasColumnType("int");
 
                     b.Property<string>("SKU")
@@ -308,9 +284,6 @@ namespace Weeblantis.Data.Migrations
                     b.HasIndex("DiscountId");
 
                     b.HasIndex("ProductCategoryId");
-
-                    b.HasIndex("ProductInventoryId")
-                        .IsUnique();
 
                     b.ToTable("Products");
                 });
@@ -510,17 +483,9 @@ namespace Weeblantis.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Weeblantis.Core.Models.Product.ProductInventoryModel", "ProductInventory")
-                        .WithOne("Product")
-                        .HasForeignKey("Weeblantis.Core.Models.Product.ProductModel", "ProductInventoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Discount");
 
                     b.Navigation("ProductCategory");
-
-                    b.Navigation("ProductInventory");
                 });
 
             modelBuilder.Entity("Weeblantis.Core.Models.User.UserAddressModel", b =>
@@ -568,11 +533,6 @@ namespace Weeblantis.Data.Migrations
             modelBuilder.Entity("Weeblantis.Core.Models.Product.ProductCategoryModel", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Weeblantis.Core.Models.Product.ProductInventoryModel", b =>
-                {
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Weeblantis.Core.Models.Product.ProductModel", b =>

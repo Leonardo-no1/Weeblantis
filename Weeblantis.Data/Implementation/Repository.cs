@@ -35,10 +35,11 @@ namespace Weeblantis.Data.Implementation
             context.SaveChanges();
             return entity;
         }
-        public void Update(T entity)
+        public T Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
             context.SaveChanges();
+            return entity;
         }
         public void Delete(int id)
         {
