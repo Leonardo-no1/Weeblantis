@@ -1,7 +1,6 @@
-import { Login } from "./login";
-import { Register } from "./register";
+import { ILogin } from './login';
+import { IRegister } from './register';
+import { IProduct } from './product';
+import { ICategory } from './category';
 
-export {
-    Login,
-    Register
-}
+export { ILogin, IProduct, IRegister, ICategory };

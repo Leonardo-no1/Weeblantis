@@ -1,0 +1,6 @@
+<div class="card bg-light mb-3" *ngIf="categoryList">
+    <div class="card-header cat-head text-white text-uppercase"> Categories</div>
+    <ul class="list-group category_block">
+        <li *ngFor="let category of categoryList" class="list-group-item" title="Hey james">{{ category.name }}</li>
+    </ul>
+</div>

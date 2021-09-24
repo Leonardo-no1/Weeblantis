@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Login} from '../models';
+import { ILogin } from '../models';
 import { UserService } from '../services';
 import { NotifierService } from 'angular-notifier';
 import { emailValidator } from '../shared/email.validator';
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.f.markAllAsTouched();
       return;
     }
-    var login: Login = {
+    var login: ILogin = {
       Email: this.email?.value,
       Password: this.password?.value,
     };

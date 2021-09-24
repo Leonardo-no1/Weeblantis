@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { ProductsComponent } from './products/products.component';
+import { CategoryListComponent } from './products/category-list/category-list.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -56,7 +57,8 @@ const customNotifierOptions: NotifierOptions = {
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProductsComponent
+    ProductsComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,

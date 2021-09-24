@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Register} from '../models';
+import { IRegister } from '../models';
 import { UserService } from '../services';
 import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     if (this.f?.invalid) {
       this.f.markAllAsTouched();
     }
-    var register: Register = {
+    var register: IRegister = {
       FirstName: this.firstName?.value,
       LastName: this.lastName?.value,
       Email: this.email?.value,
