@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Weeblantis.Core.Models.Email;
 
-namespace Weeblantis.BusinessLogic.Services
+namespace Weeblantis.BusinessLogic.Services.Email
 {
     public interface IEmailService
     {
-        void SendEmail(Email email);
+        void SendEmail(EmailModel email);
     }
 }

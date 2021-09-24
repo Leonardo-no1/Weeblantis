@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Weeblantis.Core.Models.Dtos
+namespace Weeblantis.Core.Dtos
 {
     public class UserDto
     {

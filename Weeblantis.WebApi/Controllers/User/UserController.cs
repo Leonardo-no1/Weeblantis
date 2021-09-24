@@ -1,15 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Weeblantis.BusinessLogic.Services;
+using Weeblantis.BusinessLogic.Services.User;
 using Weeblantis.Core.Exceptions;
-using Weeblantis.Core.Models.Dtos;
+using Weeblantis.Core.Dtos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Weeblantis.WebApi.Controllers
+namespace Weeblantis.WebApi.Controllers.User
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,8 +21,11 @@ namespace Weeblantis.WebApi.Controllers
         [HttpPost("Register")]
         public ActionResult Register([FromBody] UserDto user)
         {
+            if (!ModelState.IsValid) {
+                return BadRequest();
+            }
             _userService.RegisterUser(user);
-            return Ok(); 
+            return Ok();
         }
 
         // POST api/<UserController>
@@ -39,7 +38,7 @@ namespace Weeblantis.WebApi.Controllers
             }
             catch (UserNotFoundException ex)
             {
-               return NotFound(ex.Message);
+                return NotFound(ex.Message);
             }
         }
     }

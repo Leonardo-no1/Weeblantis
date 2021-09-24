@@ -1,11 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Weeblantis.BusinessLogic.Services;
-using Weeblantis.BusinessLogic.Services.Implementation;
+using Weeblantis.BusinessLogic.Services.Implementation.Email;
+using Weeblantis.BusinessLogic.Services.Implementation.User;
+using Weeblantis.BusinessLogic.Services.Email;
+using Weeblantis.BusinessLogic.Services.User;
 using Weeblantis.Data;
 using Weeblantis.Data.Implementation;
 using Weeblantis.Data.Repositories;
+using Weeblantis.BusinessLogic.Services.Product;
+using Weeblantis.BusinessLogic.Services.Implementation.Product;
 
 namespace Weeblantis.Root
 {
@@ -22,6 +26,8 @@ namespace Weeblantis.Root
             #region Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductCategoryService, ProductCategoryService>();
 
             #endregion
 

@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System;
 using System.Security.Cryptography;
+using Weeblantis.BusinessLogic.Services.Email;
+using Weeblantis.BusinessLogic.Services.User;
+using Weeblantis.Core.Dtos;
 using Weeblantis.Core.Exceptions;
-using Weeblantis.Core.Models.Dtos;
 using Weeblantis.Core.Models.Email;
 using Weeblantis.Core.Models.User;
 using Weeblantis.Data.Repositories;
 
-namespace Weeblantis.BusinessLogic.Services.Implementation
+namespace Weeblantis.BusinessLogic.Services.Implementation.User
 {
     public class UserService : IUserService
     {
@@ -39,9 +41,10 @@ namespace Weeblantis.BusinessLogic.Services.Implementation
                     HashedPassword = hashedPassword,
                     Salt = Convert.ToBase64String(salty),
                 };
-                _userRepository.Insert(user);
+                var userRegistered = _userRepository.Insert(user);
 
-                Email email = new Email {
+                EmailModel email = new EmailModel
+                {
                     EmailAddress = userDto.Email,
                     FirstName = userDto.FirstName,
                     LastName = userDto.LastName,

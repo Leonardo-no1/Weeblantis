@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Weeblantis.Core.Models.Email
 {
-    public class Email
+    public class EmailModel
     {
         public string EmailAddress { get; set; }
         public string FirstName { get; set; }

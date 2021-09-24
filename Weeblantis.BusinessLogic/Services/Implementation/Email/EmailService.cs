@@ -5,10 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Weeblantis.BusinessLogic.Services.Email;
 using Weeblantis.Core.Models;
 using Weeblantis.Core.Models.Email;
 
-namespace Weeblantis.BusinessLogic.Services
+namespace Weeblantis.BusinessLogic.Services.Implementation.Email
 {
     public class EmailService: IEmailService
     {
@@ -17,7 +18,7 @@ namespace Weeblantis.BusinessLogic.Services
         {
             _appSettings = options.Value;
         }
-        public async void SendEmail(Email email)
+        public async void SendEmail(EmailModel email)
         {
             var apiKey = _appSettings.SendGridApiKey;
             var client = new SendGridClient(apiKey);

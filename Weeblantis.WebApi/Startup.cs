@@ -1,9 +1,11 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 using Weeblantis.Core.Models;
 using Weeblantis.Root;
 using Weeblantis.WebApi.Extensions;
@@ -23,6 +25,7 @@ namespace Weeblantis.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddAutoMapper(Assembly.Load("Weeblantis.Core"));
             services.InjectDependencies(Configuration);
             services.ConfigureCors();
             services.ConfigureIISIntegration();

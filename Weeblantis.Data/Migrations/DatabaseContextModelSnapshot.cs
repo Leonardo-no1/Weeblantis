@@ -279,8 +279,11 @@ namespace Weeblantis.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiscountId")
+                    b.Property<int?>("DiscountId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageBase64")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
@@ -499,9 +502,7 @@ namespace Weeblantis.Data.Migrations
                 {
                     b.HasOne("Weeblantis.Core.Models.Product.DiscountModel", "Discount")
                         .WithMany("Products")
-                        .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DiscountId");
 
                     b.HasOne("Weeblantis.Core.Models.Product.ProductCategoryModel", "ProductCategory")
                         .WithMany("Products")

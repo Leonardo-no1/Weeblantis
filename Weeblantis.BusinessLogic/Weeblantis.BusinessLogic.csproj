@@ -14,4 +14,11 @@
     <ProjectReference Include="..\Weeblantis.Data\Weeblantis.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Cart\" />
+    <Folder Include="Services\Implementation\Cart\" />
+    <Folder Include="Services\Implementation\Order\" />
+    <Folder Include="Services\Order\" />
+  </ItemGroup>
+
 </Project>

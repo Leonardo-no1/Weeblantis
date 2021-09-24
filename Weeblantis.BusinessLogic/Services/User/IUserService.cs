@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Weeblantis.Core.Models.Dtos;
+using Weeblantis.Core.Dtos;
 
-namespace Weeblantis.BusinessLogic.Services
+namespace Weeblantis.BusinessLogic.Services.User
 {
     public interface IUserService
     {

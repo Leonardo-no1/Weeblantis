@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,6 +16,11 @@
     <ProjectReference Include="..\Weeblantis.BusinessLogic\Weeblantis.BusinessLogic.csproj" />
     <ProjectReference Include="..\Weeblantis.Core\Weeblantis.Core.csproj" />
     <ProjectReference Include="..\Weeblantis.Root\Weeblantis.Root.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Cart\" />
+    <Folder Include="Controllers\Order\" />
   </ItemGroup>
 
 

@@ -10,7 +10,7 @@ using Weeblantis.Data;
 namespace Weeblantis.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210920201731_initialCreation")]
+    [Migration("20210924095713_initialCreation")]
     partial class initialCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -281,8 +281,11 @@ namespace Weeblantis.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiscountId")
+                    b.Property<int?>("DiscountId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageBase64")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
@@ -501,9 +504,7 @@ namespace Weeblantis.Data.Migrations
                 {
                     b.HasOne("Weeblantis.Core.Models.Product.DiscountModel", "Discount")
                         .WithMany("Products")
-                        .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DiscountId");
 
                     b.HasOne("Weeblantis.Core.Models.Product.ProductCategoryModel", "ProductCategory")
                         .WithMany("Products")
