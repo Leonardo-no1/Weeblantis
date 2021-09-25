@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using Weeblantis.BusinessLogic.Services.Product;
@@ -8,6 +9,7 @@ using Weeblantis.Core.Dtos.Product;
 
 namespace Weeblantis.WebApi.Controllers.Product
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductCategoryController : ControllerBase
@@ -35,7 +37,7 @@ namespace Weeblantis.WebApi.Controllers.Product
             {
                 return StatusCode(500);
             }
-            
+
         }
 
         // PUT api/<ProductCategoryController>/5

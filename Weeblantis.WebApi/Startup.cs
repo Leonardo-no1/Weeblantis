@@ -30,6 +30,7 @@ namespace Weeblantis.WebApi
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.AddControllers();
+            services.AddTokenAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,11 +48,10 @@ namespace Weeblantis.WebApi
                 ForwardedHeaders = ForwardedHeaders.All
             });
 
+            app.UseAuthentication();
             app.UseRouting();
             app.UseCors("CorsPolicy");
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

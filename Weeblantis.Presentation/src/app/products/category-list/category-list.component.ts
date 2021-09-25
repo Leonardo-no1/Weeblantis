@@ -3,6 +3,7 @@ import { NotifierService } from 'angular-notifier';
 import { Subscription } from 'rxjs';
 import { ICategory } from 'src/app/models';
 import { ProductService } from 'src/app/services';
+import { ProductStore } from 'src/app/stores/product-store';
 
 @Component({
   selector: 'app-category-list',
@@ -12,6 +13,7 @@ import { ProductService } from 'src/app/services';
 export class CategoryListComponent implements OnInit {
   constructor(
     private productService: ProductService,
+    private productStore: ProductStore,
     private notifierService: NotifierService
   ) {}
   categoryList!: ICategory[];
@@ -28,5 +30,12 @@ export class CategoryListComponent implements OnInit {
         );
       }
     );
+  }
+
+  setProductsByCategory(categoryId: number) {
+    this.productStore.filterProductsByCategory(categoryId);
+  }
+  getAllProducts() {
+    this.productStore.loadInitialProducts();
   }
 }

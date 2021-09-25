@@ -3,6 +3,7 @@ import { NotifierService } from 'angular-notifier';
 import { Subscription } from 'rxjs';
 import { IProduct } from '../models';
 import { ProductService } from '../services';
+import { ProductStore } from '../stores/product-store';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,7 @@ import { ProductService } from '../services';
 })
 export class ProductsComponent implements OnInit {
   constructor(
-    private productService: ProductService,
+    private productStore: ProductStore,
     private notifierService: NotifierService
   ) {}
   productList!: IProduct[];
@@ -20,16 +21,8 @@ export class ProductsComponent implements OnInit {
 
   quantity: number = 0;
   ngOnInit(): void {
-    this.subscription = this.productService.getAllProducts().subscribe(
-      (products: IProduct[]) => {
-        this.productList = products;
-      },
-      (error) => {
-        this.notifierService.notify(
-          'error',
-          'Unable to retrieve product products'
-        );
-      }
-    );
+    this.productStore.products.subscribe((products) => {
+      this.productList = products;
+    });
   }
 }

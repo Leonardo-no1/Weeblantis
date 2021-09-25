@@ -10,6 +10,8 @@ using Weeblantis.Data.Implementation;
 using Weeblantis.Data.Repositories;
 using Weeblantis.BusinessLogic.Services.Product;
 using Weeblantis.BusinessLogic.Services.Implementation.Product;
+using Weeblantis.BusinessLogic.Services.Auth;
+using Weeblantis.BusinessLogic.Services.Implementation.Auth;
 
 namespace Weeblantis.Root
 {
@@ -25,6 +27,7 @@ namespace Weeblantis.Root
 
             #region Services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductCategoryService, ProductCategoryService>();
@@ -36,6 +39,7 @@ namespace Weeblantis.Root
             services.AddScoped<IUserRepository, UserRepository>();
 
             #endregion
+
         }
     }
 }
