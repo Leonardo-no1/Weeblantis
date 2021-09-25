@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'Weeblantis';
+  loggedIn: boolean = false;
   constructor(private authService: AuthService) {
     this.authService.setToken();
   }
+  logout() {}
 }

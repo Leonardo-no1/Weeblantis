@@ -28,4 +28,7 @@ export class UserService {
   login(login: ILogin): Observable<any> {
     return this.http.post<ILogin>(`${this.baseUrl}/login`, login, httpOptions);
   }
+  loggedOut() {
+    localStorage.removeItem('loggedIn');
+  }
 }

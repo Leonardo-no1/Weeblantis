@@ -12,6 +12,7 @@ import { ProductsComponent } from './products/products.component';
 import { CategoryListComponent } from './products/category-list/category-list.component';
 import { TokenInterceptor } from './shared/Interceptors/tokenInterceptor';
 import { AuthService } from './services/auth.service';
+import { CartComponent } from './shared/components/cart/cart.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -61,6 +62,7 @@ const customNotifierOptions: NotifierOptions = {
     RegisterComponent,
     ProductsComponent,
     CategoryListComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
