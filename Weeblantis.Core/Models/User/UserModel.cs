@@ -12,7 +12,6 @@ namespace Weeblantis.Core.Models.User
         public string HashedPassword { get; set; }
         public string Salt { get; set; }
         public List<UserAddressModel> UserAddresses { get; set; }
-        public List<UserPaymentModel> UserPayments { get; set; }
         public ShoppingSessionModel ShoppingSession { get; set; }
         public OrderDetailModel OrderDetail { get; set; }
     }

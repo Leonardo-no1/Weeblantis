@@ -6,11 +6,20 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="5.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SendGrid" Version="9.24.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Weeblantis.Core\Weeblantis.Core.csproj" />
     <ProjectReference Include="..\Weeblantis.Data\Weeblantis.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Cart\" />
+    <Folder Include="Services\Implementation\Cart\" />
+    <Folder Include="Services\Implementation\Order\" />
+    <Folder Include="Services\Order\" />
   </ItemGroup>
 
 </Project>

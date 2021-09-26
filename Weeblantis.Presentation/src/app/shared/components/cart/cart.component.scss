@@ -1,0 +1,31 @@
+
+.cart-count {
+    color: #FFF;
+    position: relative;
+    cursor: pointer;
+}
+.cart-count em {
+    height: 24px;
+    background-color: red;
+    font-style: normal;
+    font-size: 14px;
+    padding: 0;
+    border-radius: 50px;
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 24px;
+    text-align: center;
+    line-height: 24px;
+    color: #FFF;
+    font-weight: bold;  
+}
+  
+.cart-total {
+    padding: 1em;
+    margin: 0;
+    display: flex;
+    flex-flow: row;
+    align-items: normal;
+    justify-content: space-between;
+}

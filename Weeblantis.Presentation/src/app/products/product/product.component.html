@@ -1,0 +1,11 @@
+<div class="product py-4">
+    <span *ngIf="product.productInventory <= lowStock" class="off bg-warning">Almost Gone</span>
+    <div class="text-center"> <img [src]="product.imageBase64" height="200" width="200"> </div>
+    <div class="about text-center">
+        <h5>{{product.name}}</h5> <span>{{product.price | currency:'ZAR':'R'}}</span>
+    </div>
+    <div class="cart-button mt-3 px-2 d-flex justify-content-between align-items-center">
+        <button class="btn btn-primary " (click)="addToCart(product)" *ngIf="!inCart">Add to cart</button>
+        <button class="btn btn-danger " (click)="removeFromCart(product.id)" *ngIf="inCart">Remove</button>
+    </div>
+</div>

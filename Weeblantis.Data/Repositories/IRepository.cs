@@ -10,8 +10,8 @@ namespace Weeblantis.Data.Repositories
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
-        void Insert(T entity);
-        void Update(T entity);
+        T Insert(T entity);
+        T Update(T entity);
         void Delete(int id);
         T FindByCondition(Expression<Func<T, bool>> predicate);
     }

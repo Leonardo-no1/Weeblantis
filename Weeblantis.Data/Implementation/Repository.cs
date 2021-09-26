@@ -27,17 +27,19 @@ namespace Weeblantis.Data.Implementation
         {
             return entities.SingleOrDefault(s => s.Id == id);
         }
-        public void Insert(T entity)
+        public T Insert(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
             entities.Add(entity);
             context.SaveChanges();
+            return entity;
         }
-        public void Update(T entity)
+        public T Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
             context.SaveChanges();
+            return entity;
         }
         public void Delete(int id)
         {
