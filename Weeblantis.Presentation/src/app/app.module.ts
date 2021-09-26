@@ -13,6 +13,11 @@ import { CategoryListComponent } from './products/category-list/category-list.co
 import { TokenInterceptor } from './shared/Interceptors/tokenInterceptor';
 import { AuthService } from './services/auth.service';
 import { CartComponent } from './shared/components/cart/cart.component';
+import { ProductComponent } from './products/product/product.component';
+import { CartDialogComponent } from './shared/components/cart/cart-dialog/cart-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/Modules/material/material.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -63,6 +68,8 @@ const customNotifierOptions: NotifierOptions = {
     ProductsComponent,
     CategoryListComponent,
     CartComponent,
+    ProductComponent,
+    CartDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +77,8 @@ const customNotifierOptions: NotifierOptions = {
     HttpClientModule,
     ReactiveFormsModule,
     NotifierModule.withConfig(customNotifierOptions),
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [
     AuthService,

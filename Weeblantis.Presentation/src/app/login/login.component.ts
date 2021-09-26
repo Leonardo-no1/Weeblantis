@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
       (result) => {
         if (result) {
           this.notifierService.notify('success', 'Logged in successfully');
+          this.userService.setLogin();
           this.router.navigateByUrl('');
-          localStorage.setItem('loggedIn', 'true');
         } else {
           this.notifierService.notify('error', 'Email or Password incorrect');
         }

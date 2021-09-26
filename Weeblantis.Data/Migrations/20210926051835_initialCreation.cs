@@ -27,24 +27,6 @@ namespace Weeblantis.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PaymentDetails",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<int>(type: "int", nullable: false),
-                    Provider = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PaymentDetails", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ProductCategories",
                 columns: table => new
                 {
@@ -124,7 +106,6 @@ namespace Weeblantis.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Total = table.Column<double>(type: "float", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    PaymentDetailId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -132,12 +113,6 @@ namespace Weeblantis.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_PaymentDetails_PaymentDetailId",
-                        column: x => x.PaymentDetailId,
-                        principalTable: "PaymentDetails",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderDetails_Users_UserId",
                         column: x => x.UserId,
@@ -190,32 +165,6 @@ namespace Weeblantis.Data.Migrations
                     table.PrimaryKey("PK_UserAddresses", x => x.Id);
                     table.ForeignKey(
                         name: "FK_UserAddresses_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserPayments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PaymentType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Bank = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AccountNo = table.Column<int>(type: "int", nullable: false),
-                    Expiry = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserPayments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserPayments_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -292,12 +241,6 @@ namespace Weeblantis.Data.Migrations
                 column: "ShoppingSessionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_PaymentDetailId",
-                table: "OrderDetails",
-                column: "PaymentDetailId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_UserId",
                 table: "OrderDetails",
                 column: "UserId",
@@ -334,11 +277,6 @@ namespace Weeblantis.Data.Migrations
                 name: "IX_UserAddresses_UserId",
                 table: "UserAddresses",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserPayments_UserId",
-                table: "UserPayments",
-                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -353,9 +291,6 @@ namespace Weeblantis.Data.Migrations
                 name: "UserAddresses");
 
             migrationBuilder.DropTable(
-                name: "UserPayments");
-
-            migrationBuilder.DropTable(
                 name: "ShoppingSessions");
 
             migrationBuilder.DropTable(
@@ -363,9 +298,6 @@ namespace Weeblantis.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "PaymentDetails");
 
             migrationBuilder.DropTable(
                 name: "Users");

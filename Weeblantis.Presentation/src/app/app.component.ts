@@ -1,4 +1,5 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { UserService } from './services';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -8,9 +9,17 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'Weeblantis';
-  loggedIn: boolean = false;
-  constructor(private authService: AuthService) {
+  isLoggedIn: boolean = false;
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {
     this.authService.setToken();
+    this.userService.getLoggedInState().subscribe((result) => {
+      this.isLoggedIn = result;
+    });
   }
-  logout() {}
+  logout() {
+    this.userService.logout();
+  }
 }

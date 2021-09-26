@@ -11,18 +11,8 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row g-2" *ngIf="productList">
-                        <div *ngFor="let product of productList" class="col-md-4">
-                            <div class="product py-4">
-                                <span *ngIf="product.productInventory <= lowStock" class="off bg-warning">Almost Gone</span>
-                                <div class="text-center"> <img [src]="product.imageBase64" height="200" width="200"> </div>
-                                <div class="about text-center">
-                                    <h5>{{product.name}}</h5> <span>{{product.price | currency:'ZAR':'R'}}</span>
-                                </div>
-                                <div class="cart-button mt-3 px-2 d-flex justify-content-between align-items-center"> <button class="btn btn-primary text-uppercase">Add to cart</button>
-                                    <div class="add"> <span class="product_fav"><i class="fa fa-minus"></i></span> {{quantity}} <span class="product_fav"><i
-                                                class="fa fa-plus"></i></span> </div>
-                                </div>
-                            </div>
+                        <div *ngFor="let product of productList;let i = index" class="col-md-4">
+                            <app-product [product]="product"></app-product>
                         </div>
                     </div>
                 </div>

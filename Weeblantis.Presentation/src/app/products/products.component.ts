@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { NotifierService } from 'angular-notifier';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IProduct } from '../models';
 import { ProductService } from '../services';
+import { CartService } from '../services/cart.service';
 import { ProductStore } from '../stores/product-store';
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -13,13 +14,18 @@ import { ProductStore } from '../stores/product-store';
 export class ProductsComponent implements OnInit {
   constructor(
     private productStore: ProductStore,
-    private notifierService: NotifierService
-  ) {}
-  productList!: IProduct[];
+    private notifierService: NotifierService,
+    private cartService: CartService
+  ) {
+    this.cartService.getItems().subscribe((cartItems) => {
+      this.cartItems = cartItems;
+    });
+  }
+  productList: IProduct[];
+  inCart = false;
   subscription!: Subscription;
   lowStock = 30;
-
-  quantity: number = 0;
+  cartItems: IProduct[];
   ngOnInit(): void {
     this.productStore.products.subscribe((products) => {
       this.productList = products;
