@@ -20,7 +20,7 @@ export class CartService {
   }
 
   getItems() {
-    debugger;
+
     return this._cart.asObservable();
   }
 
