@@ -12,6 +12,8 @@ using Weeblantis.BusinessLogic.Services.Product;
 using Weeblantis.BusinessLogic.Services.Implementation.Product;
 using Weeblantis.BusinessLogic.Services.Auth;
 using Weeblantis.BusinessLogic.Services.Implementation.Auth;
+using Weeblantis.BusinessLogic.Services.Order;
+using Weeblantis.BusinessLogic.Services.Implementation.Order;
 
 namespace Weeblantis.Root
 {
@@ -31,6 +33,7 @@ namespace Weeblantis.Root
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductCategoryService, ProductCategoryService>();
+            services.AddScoped<IOrderService, OrderService>();
 
             #endregion
 

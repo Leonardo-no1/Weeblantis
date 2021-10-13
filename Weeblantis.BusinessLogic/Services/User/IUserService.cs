@@ -10,5 +10,6 @@ namespace Weeblantis.BusinessLogic.Services.User
     {
         public void RegisterUser(UserDto userDto);
         public bool VerifyPassword(LoginDto loginDto);
+        public UserDto GetUser(string email);
     }
 }

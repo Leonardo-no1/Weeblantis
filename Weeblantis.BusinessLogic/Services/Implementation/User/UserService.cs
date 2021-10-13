@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System;
 using System.Security.Cryptography;
 using Weeblantis.BusinessLogic.Services.Email;
@@ -15,10 +16,12 @@ namespace Weeblantis.BusinessLogic.Services.Implementation.User
     {
         private IUserRepository _userRepository;
         private IEmailService _emailService;
-        public UserService(IUserRepository userRepository, IEmailService emailService)
+        public readonly IMapper _mapper;
+        public UserService(IUserRepository userRepository, IEmailService emailService, IMapper mapper)
         {
             _userRepository = userRepository;
             _emailService = emailService;
+            _mapper = mapper;
         }
 
         public void RegisterUser(UserDto userDto)
@@ -90,6 +93,14 @@ namespace Weeblantis.BusinessLogic.Services.Implementation.User
                     prf: KeyDerivationPrf.HMACSHA256,
                     iterationCount: 100000,
                     numBytesRequested: 256 / 8));
+        }
+
+
+        public UserDto GetUser(string email)
+        {
+            var userModel = _userRepository.GetByEmail(email);
+            var userDto = _mapper.Map<UserDto>(userModel);
+            return userDto;
         }
     }
 }

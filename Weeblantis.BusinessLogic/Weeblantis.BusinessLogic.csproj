@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Cart\**" />
+    <Compile Remove="Services\Implementation\Cart\**" />
+    <EmbeddedResource Remove="Services\Cart\**" />
+    <EmbeddedResource Remove="Services\Implementation\Cart\**" />
+    <None Remove="Services\Cart\**" />
+    <None Remove="Services\Implementation\Cart\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mailjet.Api" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="5.0.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="SendGrid" Version="9.24.2" />
@@ -13,13 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Weeblantis.Core\Weeblantis.Core.csproj" />
     <ProjectReference Include="..\Weeblantis.Data\Weeblantis.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Cart\" />
-    <Folder Include="Services\Implementation\Cart\" />
-    <Folder Include="Services\Implementation\Order\" />
-    <Folder Include="Services\Order\" />
   </ItemGroup>
 
 </Project>

@@ -32,15 +32,19 @@ export class UserService {
     return this.http.post<ILogin>(`${this.baseUrl}/login`, login, httpOptions);
   }
 
+  /** logout user */
   logout() {
     this.loggedIn = false;
     this._loginState.next(this.loggedIn);
     localStorage.removeItem('loggedIn');
   }
+
+  /** retrieve logged in state */
   getLoggedInState() {
     return this._loginState.asObservable();
   }
 
+  /** set logged in state */
   setLogin() {
     this.loggedIn = true;
     this._loginState.next(this.loggedIn);

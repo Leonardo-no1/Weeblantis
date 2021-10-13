@@ -43,5 +43,19 @@ namespace Weeblantis.WebApi.Controllers.User
                 return NotFound(ex.Message);
             }
         }
+
+        // GET api/GetUser
+        [HttpGet("GetUser")]
+        public ActionResult<UserDto> GetUser(string email)
+        {
+            try
+            {
+                return Ok(_userService.GetUser(email));
+            }
+            catch (UserNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }
